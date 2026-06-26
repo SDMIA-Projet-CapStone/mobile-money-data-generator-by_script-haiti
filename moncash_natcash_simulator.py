@@ -383,6 +383,6 @@ if __name__ == "__main__":
     import time
     t0 = time.time()
     df = generate(n=100_000, fraud_ratio=0.025,
-                  output_file="moncash_natcash_v3.csv", seed=42)
+                  output_file="datasets/moncash_natcash_v3.csv", seed=42)
     print(f"\n  Temps total : {time.time()-t0:.1f}s")
     print(f"  Dataset     : {df.shape[0]:,} lignes × {df.shape[1]} colonnes")
