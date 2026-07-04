@@ -1,6 +1,6 @@
 """
 Simulateur MonCash / NatCash — Haïti  v3.0  (vectorisé)
-Génération ~10× plus rapide grâce à NumPy vectorisé.
+Génération 10× plus rapide grâce à NumPy vectorisé.
 Auteur : Projet Détection Fraude Haiti
 """
 
@@ -26,19 +26,19 @@ DEPT_WEIGHTS /= DEPT_WEIGHTS.sum()
 
 VILLES = {
     "Ouest":       ["Port-au-Prince","Pétion-Ville","Delmas","Carrefour"],
-    "Artibonite":  ["Gonaïves","Saint-Marc"],
-    "Centre":      ["Hinche","Mirebalais"],
-    "Nord":        ["Cap-Haïtien","Fort-Liberté"],
-    "Nord-Est":    ["Fort-Liberté","Ouanaminthe"],
-    "Nord-Ouest":  ["Port-de-Paix"],
-    "Sud":         ["Les Cayes"],
-    "Sud-Est":     ["Jacmel"],
-    "Grande-Anse": ["Jérémie"],
-    "Nippes":      ["Miragoâne"],
+    "Artibonite":  ["Gonaïves","Saint-Marc","Verrettes","Dessalines", "L'Estère"],
+    "Centre":      ["Hinche","Mirebalais","Thomonde","Lascahobas", "Belladère"],
+    "Nord":        ["Cap-Haïtien","Fort-Liberté", "Port-de-Paix","Gonaïves"],
+    "Nord-Est":    ["Fort-Liberté","Ouanaminthe", "Vallières","Ferrier", "Trou-du-Nord"],
+    "Nord-Ouest":  ["Port-de-Paix", "Môle-Saint-Nicolas", "Jean-Rabel", "Anse-à-Foleur"],
+    "Sud":         ["Les Cayes", "Aquin", "Port-Salut", "Chardonnières", "Camp-Perrin"],
+    "Sud-Est":     ["Jacmel", "Hinche", "Belle-Anse", "Marigot", "Anse-à-Pitres"],
+    "Grande-Anse": ["Jérémie", "Anse-d'Hainault", "Abricots", "Chambellan", "Moron", "Roseaux"],
+    "Nippes":      ["Miragoâne", "Anse-à-Veau", "Baradères", "Petit-Trou-de-Nippes"],
 }
 
-OPERATORS  = ["MonCash", "NatCash"]
-PLATFORMS  = ["USSD", "APP_ANDROID", "APP_IOS", "AGENT"]
+OPERATORS  = ["NatCash"]
+PLATFORMS  = ["USSD", "APP_ANDROID", "APP_IOS"]
 
 _raw = [0.01,0.01,0.01,0.01,0.01,0.02,
         0.04,0.07,0.09,0.08,0.07,0.06,
@@ -79,8 +79,8 @@ def create_users(n: int = 6000) -> pd.DataFrame:
     dept_idx  = RNG.choice(len(DEPT_NAMES), size=n, p=DEPT_WEIGHTS)
     depts     = np.array(DEPT_NAMES)[dept_idx]
     villes    = np.array([random.choice(VILLES[d]) for d in depts])
-    operators = RNG.choice(OPERATORS, size=n, p=[0.60, 0.40])
-    platforms = RNG.choice(PLATFORMS, size=n, p=[0.40, 0.35, 0.15, 0.10])
+    operators = RNG.choice(OPERATORS, size=n, p=[1.0])
+    platforms = RNG.choice(PLATFORMS, size=n, p=[0.40, 0.35, 0.15])
 
     return pd.DataFrame({
         "user_id":          [f"U{i:07d}" for i in range(n)],
