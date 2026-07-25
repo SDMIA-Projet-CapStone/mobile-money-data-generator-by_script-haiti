@@ -39,7 +39,7 @@ Faute d'accès à des données réelles labellisées de MonCash/NatCash (confide
 - **Variables principales :** `step`, `type`, `amount`, `nameOrig`, `oldbalanceOrg`, `newbalanceOrig`, `nameDest`, `oldbalanceDest`, `newbalanceDest`, `isFraud`, `isFlaggedFraud`
 - **Particularité du simulateur :** les fraudes n'apparaissent que sur les transactions de type `TRANSFER` et `CASH_OUT` (comportement documenté et vérifié empiriquement dans le notebook)
 
-> ⚠️ Le CSV n'est pas versionné dans ce dépôt (fichier volumineux). À télécharger depuis Kaggle et placer dans `datasets/PS_20174392719_1491204439457_log.csv`.
+> Le CSV n'est pas versionné dans ce dépôt (fichier volumineux). À télécharger depuis Kaggle et placer dans `datasets/PS_20174392719_1491204439457_log.csv`.
 
 ---
 
